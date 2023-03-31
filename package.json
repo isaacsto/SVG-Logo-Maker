@@ -24,5 +24,8 @@
     "svg-builder": "^2.0.0"
   },
   "keywords": [],
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
 }

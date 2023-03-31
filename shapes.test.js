@@ -1,3 +1,8 @@
-const shape = new Triangle();
-shape.setColor("blue");
-expect(shape.render()).toEqual('<polygon points="150, 18 244, 182 56, 182" fill="blue" />');
+const Shapes = require('./shapes');
+
+test('renders an SVG file', () => {
+  const textColor = 'white';
+  const shape = new Shapes(textColor, 'circle', 'green');
+  shape.render();
+  expect(fs.existsSync('logo.svg')).toBe(true);
+});

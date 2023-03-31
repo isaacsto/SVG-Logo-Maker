@@ -1,4 +1,4 @@
-/* const inquirer = require('inquirer'); */
+
 
 
 const fs = require('fs');
@@ -6,10 +6,11 @@ const { buildSVG } = require('svg-builder');
 const prompts = require('prompts');
 
 
-/* const svgFile = ({textcolor, shapes, color }) => */
+
 
 class Shapes {
-    constructor(textColor, shapes, backgroundColor) {
+    constructor(text, textColor, shapes, backgroundColor) {
+            this.text = text;
             this.textColor = textColor,
             this.shapes = shapes,
             this.backgroundColor = backgroundColor
@@ -22,44 +23,65 @@ class Shapes {
 
 class Triangle extends Shapes {
     constructor() {
-        super(textcolor, shapes, backgroundColor)
+        super(text, textcolor, shapes, backgroundColor)
         this.points = 3
     }
 }
 
+class Square extends Shapes {
+    constructor() {
+        super(text, textcolor, shapes, backgroundColor)
+        this.points = 4
+    }
+}
+
+class Circle extends Shapes {
+    constructor() {
+        super(text, textcolor, shapes, backgroundColor)
+        this.points = 0
+    }
+}
 
 
 async function generateSVG() {
     const questions = [
         {
-            type: 'list',
+            type: 'input',
+            name: 'text',
+            message: 'Enter up to three characters:'
+        }
+        {
+            type: 'input',
             name: 'textcolor',
             message: 'What color should the text be?',
-            choices: ['white', 'black', 'gray',]
         },
         {
-            type: 'list',
+            type: 'select',
             name: 'shapes',
             message: 'What shape should the SVG be?',
-            choices: ['circle', 'triangle', 'square',]
+            choices: [
+                { title: 'Circle', value: 'circle'},
+                { title: 'Triangle', value: 'triangle' },
+                { title: 'Square', value: 'square'}
+            ]
         },
         {
-            type: 'list',
-            name: 'color',
+            type: 'input',
+            name: 'shapeColor',
             message: 'What color should the shape be?',
-            choices: ['green', 'blue', 'red',]
+            choices: 'Enter the shape color:'
         },
     ];
 
 const answers = await prompts(questions);
 
-const svgContent = createSVG({
+const svgContent = buildSVG({
     textColor: answers.textColor,
     shapes: answers.shapes,
     backgroundColor: answers.backgroundColor,
 });
 
-fs.writeFile('output.svg', svgContent, (err) => {
+fs.writeFile('log.svg', svgContent, (err) => {
     if (err) {
         console.errot(err);
         return;
