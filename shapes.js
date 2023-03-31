@@ -2,7 +2,8 @@
 
 
 const fs = require('fs');
-const { buildSVG } = require('svg-builder');
+const SVG = require('svg-builder');
+
 const prompts = require('prompts');
 
 
@@ -46,12 +47,12 @@ class Circle extends Shapes {
 async function generateSVG() {
     const questions = [
         {
-            type: 'input',
+            type: 'text',
             name: 'text',
             message: 'Enter up to three characters:'
-        }
+        },
         {
-            type: 'input',
+            type: 'text',
             name: 'textcolor',
             message: 'What color should the text be?',
         },
@@ -66,7 +67,7 @@ async function generateSVG() {
             ]
         },
         {
-            type: 'input',
+            type: 'text',
             name: 'shapeColor',
             message: 'What color should the shape be?',
             choices: 'Enter the shape color:'
@@ -75,13 +76,21 @@ async function generateSVG() {
 
 const answers = await prompts(questions);
 
-const svgContent = buildSVG({
-    textColor: answers.textColor,
-    shapes: answers.shapes,
-    backgroundColor: answers.backgroundColor,
-});
+const svg = new SVG();
 
-fs.writeFile('log.svg', svgContent, (err) => {
+//initializes svg properties 
+  const width = 300;
+  const height = 200;
+  const text = answers.text.substring(0, 3);
+  const textColor = answers.textColor;
+  const shape = answers.shape;
+  const shapeColor = answers.shapeColor;
+
+
+
+
+  //save file, generate success message 
+fs.writeFile('logo.svg', svgContent, (err) => {
     if (err) {
         console.errot(err);
         return;
