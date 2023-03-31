@@ -78,13 +78,39 @@ const answers = await prompts(questions);
 
 const svg = new SVG();
 
-//initializes svg properties 
-  const width = 300;
-  const height = 200;
-  const text = answers.text.substring(0, 3);
-  const textColor = answers.textColor;
-  const shape = answers.shape;
-  const shapeColor = answers.shapeColor;
+ // Add text to the SVG
+ const text = svg.create('text', {
+    x: 50,
+    y: 50,
+    fill: answers.textColor,
+    'font-size': '36px',
+    'font-weight': 'bold'
+  });
+  text.textContent = answers.text;
+
+  // Add shape to the SVG
+  let shape;
+  if (answers.shape === 'circle') {
+    shape = svg.create('circle', {
+      cx: 100,
+      cy: 100,
+      r: 50,
+      fill: answers.shapeColor
+    });
+  } else if (answers.shape === 'triangle') {
+    shape = svg.create('polygon', {
+      points: '75,50 25,150 125,150',
+      fill: answers.shapeColor
+    });
+  } else if (answers.shape === 'square') {
+    shape = svg.create('rect', {
+      x: 50,
+      y: 50,
+      width: 100,
+      height: 100,
+      fill: answers.shapeColor
+    });
+  }
 
 
 

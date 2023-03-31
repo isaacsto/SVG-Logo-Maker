@@ -6,3 +6,6 @@ test('renders an SVG file', () => {
   shape.render();
   expect(fs.existsSync('logo.svg')).toBe(true);
 });
+
+
+
