@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/isaacsto/SVG-Logo-Maker#readme",
   "dependencies": {
-    "inquirer": "^9.1.5",
+    "inquirer": "^8.2.4",
     "prompts": "^2.4.2",
     "svg-builder": "^2.0.0"
   },
