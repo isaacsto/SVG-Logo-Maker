@@ -54,7 +54,7 @@ class Square extends Shapes {
         width="300" height="200"
         xmlns="http://www.w3.org/2000/svg">
         <rect width="300" height="300" fill="${this.backgroundColor}"/>
-        <text fill="${this.textColor}" font-size="50" x="200" y ="200">${this.text}</text>`,
+        <text fill="${this.textColor}" font-size="50" x="110" y ="165">${this.text}</text>`,
         (err) => {
             if(err) reject(err); 
             else {
@@ -76,7 +76,7 @@ class Circle extends Shapes {
         width="300" height="200"
         xmlns="http://www.w3.org/2000/svg">
         <circle cx="300" cy="250" r="230" fill="${this.backgroundColor}"/>
-        <text fill="${this.textColor}" font-size="50" x="200" y ="200">${this.text}</text>`,
+        <text fill="${this.textColor}" font-size="50" x="260" y ="260">${this.text}</text>`,
         (err) => {
             if (err) reject(err);
             else {

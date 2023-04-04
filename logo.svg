@@ -1,5 +1,5 @@
 <svg version="1.1"
         width="300" height="200"
         xmlns="http://www.w3.org/2000/svg">
-        <polygon points="200,10 250,190 160,210" fill="green"/>
-        <text fill="white" font-size="20" x="190" y ="150">svg</text>
+        <circle cx="300" cy="250" r="230" fill="black"/>
+        <text fill="pink" font-size="50" x="260" y ="260">svg</text>
