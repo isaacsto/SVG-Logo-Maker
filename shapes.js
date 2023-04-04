@@ -28,7 +28,7 @@ class Triangle extends Shapes {
         fs.writeFile('logo.svg', `<svg version="1.1"
         width="300" height="200"
         xmlns="http://www.w3.org/2000/svg">
-        <polygon points="200,10 250,190 160,210" fill="${this.backgroundColor}"/>
+        <polygon points="200,10 250,190 160,200" fill="${this.backgroundColor}"/>
         <text fill="${this.textColor}" font-size="20" x="190" y ="150">${this.text}</text></svg>`,
         (err) => {
             if (err) reject(err);
@@ -53,8 +53,8 @@ class Square extends Shapes {
         return fs.writeFile('logo.svg', `<svg version="1.1"
         width="300" height="200"
         xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="300" fill="${this.backgroundColor}"/>
-        <text fill="${this.textColor}" font-size="50" x="110" y ="165">${this.text}</text></svg>`,
+        <rect width="150" height="150" fill="${this.backgroundColor}"/>
+        <text fill="${this.textColor}" font-size="30" x="55" y ="80">${this.text}</text></svg>`,
         (err) => {
             if(err) reject(err); 
             else {
