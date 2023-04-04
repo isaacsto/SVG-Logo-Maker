@@ -3,6 +3,7 @@
 
 const fs = require('fs');
 const SVG = require('svg-builder');
+const inquirer = require('inquirer')
 
 
 class Shapes {
@@ -84,7 +85,7 @@ async function generateSVG() {
     ];
 }
 
-const answers = await inquirer(questions);
+const answers = inquirer(questions);
 console.log(answers)
 
 if (answers.shapes === 'triangle') { 
