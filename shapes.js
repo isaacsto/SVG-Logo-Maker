@@ -26,10 +26,10 @@ class Triangle extends Shapes {
     renderTri() {
         return new Promise((resolve, reject) => {
         fs.writeFile('logo.svg', `<svg version="1.1"
-        width="500" height="500"
+        width="300" height="200"
         xmlns="http://www.w3.org/2000/svg">
-        <polygon points="250,60 100,400 400,400" fill=${this.backgroundColor} />
-        <text fill="${this.textColor}" font-size="50" x="200" y ="200">${this.text}</text>`,
+        <polygon points="200,10 250,190 160,210" fill="${this.backgroundColor}"/>
+        <text fill="${this.textColor}" font-size="20" x="190" y ="150">${this.text}</text>`,
         (err) => {
             if (err) reject(err);
             else{ 
@@ -51,9 +51,9 @@ class Square extends Shapes {
     }
     renderSq() {
         return fs.writeFile('logo.svg', `<svg version="1.1"
-        width="500" height="500"
+        width="300" height="200"
         xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="300" fill=${this.backgroundColor}/>
+        <rect width="300" height="300" fill="${this.backgroundColor}"/>
         <text fill="${this.textColor}" font-size="50" x="200" y ="200">${this.text}</text>`,
         (err) => {
             if(err) reject(err); 
@@ -73,9 +73,9 @@ class Circle extends Shapes {
     renderCi() {
         return fs.writeFile('logo.svg', 
         `<svg version="1.1"
-        width="500" height="500"
+        width="300" height="200"
         xmlns="http://www.w3.org/2000/svg">
-        <circle cx="300" cy="250" r="230" fill=${this.backgroundColor}/>
+        <circle cx="300" cy="250" r="230" fill="${this.backgroundColor}"/>
         <text fill="${this.textColor}" font-size="50" x="200" y ="200">${this.text}</text>`,
         (err) => {
             if (err) reject(err);
@@ -140,7 +140,3 @@ if (answers.shapes === 'circle') {
 
 generateSVG(); 
 
-fs.writeFile('logo.svg', '', function(err){
-    if (err) throw err;
-    console.log('Generated logo.svg!');
-  }); 
