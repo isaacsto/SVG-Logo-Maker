@@ -1,5 +1,5 @@
 <svg version="1.1"
         width="300" height="200"
         xmlns="http://www.w3.org/2000/svg">
-        <circle cx="150" cy="100" r="70" fill="green"/>
-        <text fill="white" font-size="30" x="135" y ="110">svg</text></svg>
+        <circle cx="150" cy="100" r="70" fill="yellow"/>
+        <text fill="black" font-size="30" x="135" y ="110">svg</text></svg>
