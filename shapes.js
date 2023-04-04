@@ -1,9 +1,8 @@
 
-
-
 const fs = require('fs');
 
-const inquirer = require('inquirer')
+const inquirer = require('inquirer');
+const { resolve } = require('path');
 
 
 class Shapes {
@@ -13,9 +12,9 @@ class Shapes {
             this.shapes = shapes,
             this.backgroundColor = backgroundColor
     }
-    render() {
+ /*    render() {
         fs.writeFile('logo.svg', ``)
-    }
+    } */
 }
 
 
@@ -25,9 +24,23 @@ class Triangle extends Shapes {
         this.points = 3
     }
     renderTri() {
-        return fs.writeFile('logo.svg', `<polygon points="250,60 100,400 400,400" class="triangle" fill=${this.backgroundColor} />
-        <text fill="${this.textColor}" font-size="50" x="200" y ="200">${this.text}</text>`)
-    }
+        return new Promise((resolve, reject) => {
+        fs.writeFile('logo.svg', `<svg version="1.1"
+        width="500" height="500"
+        xmlns="http://www.w3.org/2000/svg">
+        <polygon points="250,60 100,400 400,400" fill=${this.backgroundColor} />
+        <text fill="${this.textColor}" font-size="50" x="200" y ="200">${this.text}</text>`,
+        (err) => {
+            if (err) reject(err);
+            else{ 
+                console.log('Generated logo.svg!');
+                resolve();
+            }
+        }
+        );
+    });
+}
+
 
 }
 
@@ -37,8 +50,18 @@ class Square extends Shapes {
         this.points = 4
     }
     renderSq() {
-        return fs.writeFile('logo.svg', `<rect width="300" height="300" fill=${this.backgroundColor}/>
-        <text fill="${this.textcolor}" font-size="50" x="200" y ="200">${this.text}</text>`)
+        return fs.writeFile('logo.svg', `<svg version="1.1"
+        width="500" height="500"
+        xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="300" fill=${this.backgroundColor}/>
+        <text fill="${this.textColor}" font-size="50" x="200" y ="200">${this.text}</text>`,
+        (err) => {
+            if(err) reject(err); 
+            else {
+                console.log('Generated logo.svg!');
+                resolve();
+            }
+        })
     }
 }
 
@@ -48,8 +71,19 @@ class Circle extends Shapes {
         this.points = 0
     }
     renderCi() {
-        return fs.writeFile('logo.svg', `<circle cx="300" cy="250" r="230" fill=${this.backgroundColor}/>
-        <text fill="${this.textcolor}" font-size="50" x="200" y ="200">${this.text}</text>`)
+        return fs.writeFile('logo.svg', 
+        `<svg version="1.1"
+        width="500" height="500"
+        xmlns="http://www.w3.org/2000/svg">
+        <circle cx="300" cy="250" r="230" fill=${this.backgroundColor}/>
+        <text fill="${this.textColor}" font-size="50" x="200" y ="200">${this.text}</text>`,
+        (err) => {
+            if (err) reject(err);
+            else {
+                console.log('Generated logo.svg!');
+                resolve();
+            }
+        })
     }
 }
 
@@ -104,9 +138,9 @@ if (answers.shapes === 'circle') {
 
 }
 
-generateSVG();
+generateSVG(); 
 
-/* fs.writeFile('logo.svg', '', (err) => {
+fs.writeFile('logo.svg', '', function(err){
     if (err) throw err;
     console.log('Generated logo.svg!');
-  }); */
+  }); 
