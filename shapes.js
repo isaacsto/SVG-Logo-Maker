@@ -2,7 +2,7 @@
 
 
 const fs = require('fs');
-const SVG = require('svg-builder');
+
 const inquirer = require('inquirer')
 
 
