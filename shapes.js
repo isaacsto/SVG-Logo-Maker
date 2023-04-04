@@ -20,35 +20,35 @@ class Shapes {
 
 
 class Triangle extends Shapes {
-    constructor(text, textcolor, shapes, backgroundColor) {
-        super(text, textcolor, shapes, backgroundColor)
+    constructor(text, textColor, shapes, backgroundColor) {
+        super(text, textColor, shapes, backgroundColor)
         this.points = 3
     }
     renderTri() {
         return fs.writeFile('logo.svg', `<polygon points="250,60 100,400 400,400" class="triangle" fill=${this.backgroundColor} />
-        <text fill="${this.textcolor}" font-size="50" x="200" y ="200">${this.text}</text>`)
+        <text fill="${this.textColor}" font-size="50" x="200" y ="200">${this.text}</text>`)
     }
 
 }
 
 class Square extends Shapes {
-    constructor() {
-        super(text, textcolor, shapes, backgroundColor)
+    constructor(text, textColor, shapes, backgroundColor) {
+        super(text, textColor, shapes, backgroundColor)
         this.points = 4
     }
     renderSq() {
-        return fs.writeFile('logo.svg', `<rect width="400" height="400" fill=${this.backgroundColor}/>
+        return fs.writeFile('logo.svg', `<rect width="300" height="300" fill=${this.backgroundColor}/>
         <text fill="${this.textcolor}" font-size="50" x="200" y ="200">${this.text}</text>`)
     }
 }
 
 class Circle extends Shapes {
-    constructor() {
-        super(text, textcolor, shapes, backgroundColor)
+    constructor(text, textColor, shapes, backgroundColor) {
+        super(text, textColor, shapes, backgroundColor)
         this.points = 0
     }
     renderCi() {
-        return fs.writeFile('logo.svg', `<circle cx="400" cy="350" r="330" fill=${this.backgroundColor}/>
+        return fs.writeFile('logo.svg', `<circle cx="300" cy="250" r="230" fill=${this.backgroundColor}/>
         <text fill="${this.textcolor}" font-size="50" x="200" y ="200">${this.text}</text>`)
     }
 }
@@ -85,21 +85,28 @@ async function generateSVG() {
     ];
 
 
+
 const answers = await inquirer.prompt(questions)
 console.log(answers)
 
 if (answers.shapes === 'triangle') { 
    var triangle = new Triangle(answers.text, answers.textcolor, answers.shapes, answers.shapeColor)
+   triangle.renderTri(); 
 }
 if (answers.shapes === 'square') {
     var square = new Square(answers.text, answers.textcolor, answers.shapes, answers.shapeColor)
+    square.renderSq();
 }
 if (answers.shapes === 'circle') {
     var circle = new Circle(answers.text, answers.textcolor, answers.shapes, answers.shapeColor)
+    circle.renderCi();
 }
-triangle.renderTri(); 
-square.renderSq();
-circle.renderSq();
+
 }
 
 generateSVG();
+
+/* fs.writeFile('logo.svg', '', (err) => {
+    if (err) throw err;
+    console.log('Generated logo.svg!');
+  }); */
